@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 const galleryImages = [
   '/cyber1.jpeg',
@@ -8,22 +9,24 @@ const galleryImages = [
   '/ratan1.jpeg',
   '/tech4.jpeg',
   '/panch3.jpeg',
-  '/gallery6.jpg',
-  '/gallery7.jpg',
+  '/panch4.jpeg',
+  '/tech4.jpeg',
   '/gallery8.jpg',
-  '/gallery9.jpg',
-  '/gallery10.jpg',
-  '/gallery11.jpg',
-  '/gallery12.jpg',
+  '/gallery9.jpeg',
+  '/gallery10.jpeg',
+  '/gallery11.jpeg',
+  '/gallery12.jpeg',
 ];
 
 const Gallery: React.FC = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   return (
     <section id="gallery" className="w-full py-20 bg-yellow-50 overflow-hidden relative">
-      <div className="container mx-auto px-6 md:px-12 text-center">
+      <div className="container mx-auto px-4 md:px-12 text-center">
         {/* Heading & Text */}
         <motion.h2
-          className="text-4xl font-bold text-yellow-800 mb-4"
+          className="text-6xl font-bold text-yellow-800 mb-4 accent"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -41,37 +44,52 @@ const Gallery: React.FC = () => {
         </motion.p>
       </div>
 
-      {/* Infinite Scrolling Gallery */}
-      <div className="relative w-full">
-        <motion.div
-          className="flex gap-6"
-          initial={{ x: 0 }}
-          animate={{ x: ['0%', '-50%'] }}
-          transition={{
-            ease: 'linear',
-            duration: 30,
-            repeat: Infinity,
-          }}
-        >
-          {[...galleryImages, ...galleryImages].map((src, index) => (
-            <div
-              key={index}
-              className="relative w-64 h-40 md:w-80 md:h-52 flex-shrink-0 rounded-2xl overflow-hidden border-4 border-yellow-200 shadow-md"
-            >
-              <Image
-                src={src}
-                alt={`Gallery ${index + 1}`}
-                fill
-                className="object-cover object-center"
-              />
-            </div>
-          ))}
-        </motion.div>
+      {/* Scrollable Gallery */}
+      <div
+        className="relative w-full overflow-x-auto no-scrollbar"
+        ref={scrollRef}
+      >
+        <div className="relative">
+          <motion.div
+            className="flex gap-4 w-max"
+            initial={{ x: 0 }}
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{
+              ease: 'linear',
+              duration: 80, // slower sliding
+              repeat: Infinity,
+            }}
+          >
+            {[...galleryImages, ...galleryImages].map((src, index) => (
+              <div
+                key={index}
+                className="relative w-64 h-40 md:w-80 md:h-52 flex-shrink-0 rounded-2xl overflow-hidden border-1 border-gray-400 shadow-md"
+              >
+                <Image
+                  src={src}
+                  alt={`Gallery ${index + 1}`}
+                  fill
+                  className="object-cover object-center"
+                />
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Gradient overlays for fade edges on images only */}
+          <div className="absolute top-0 left-0 w-10 h-full bg-gradient-to-r from-gray-400 to-transparent pointer-events-none rounded-l-2xl" />
+          <div className="absolute top-0 right-0 w-10 h-full bg-gradient-to-l from-gray-400 to-transparent pointer-events-none rounded-r-2xl" />
+        </div>
       </div>
 
-      {/* Gradient overlays for fade edges */}
-      <div className="absolute top-0 left-0 w-40 h-full bg-gradient-to-r from-yellow-50 to-transparent pointer-events-none" />
-      <div className="absolute top-0 right-0 w-40 h-full bg-gradient-to-l from-yellow-50 to-transparent pointer-events-none" />
+      <style jsx>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
+      `}</style>
     </section>
   );
 };

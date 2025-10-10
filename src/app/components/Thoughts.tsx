@@ -44,7 +44,7 @@ export default function GurudevThoughtsCarousel() {
   return (
     <section className="w-full py-6 bg-gradient-to-b from-white to-yellow-50">
       <div className="container mx-auto px-6 md:px-12 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-yellow-800 mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-yellow-800 mb-12 accent">
           Thoughts from Gurudev
         </h2>
 
