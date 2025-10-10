@@ -1,24 +1,39 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 
 const navItems = [
-  { title: 'Home', href: '#home' },
+  { title: 'Home', href: '/' },
   { title: 'About', href: '#about' },
-  { title: 'Work', href: '#work' },
-  { title: 'Contact', href: '#contact' },
+  { title: 'Events', href: '/events' },
+  { title: 'Gallery', href: '/gallery' },
 ];
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="w-full fixed top-0 left-0 z-50 bg-yellow-50 shadow-md">
+    <nav
+      className={`w-full fixed top-0 left-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-white/30 backdrop-blur-md shadow-md'
+          : 'bg-white/20 backdrop-blur-sm'
+      } border-b border-white/30`}
+    >
       <div className="container mx-auto flex justify-between items-center px-6 md:px-12 h-20">
         {/* Logo */}
-        <Link href="#home" className="text-2xl font-bold text-black">
+        <Link href="/" className="text-2xl font-bold text-black">
           Anita Raicar
         </Link>
 
@@ -34,7 +49,7 @@ const Navbar: React.FC = () => {
             </Link>
           ))}
           <Link
-            href="#contact"
+            href="/contact"
             className="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-6 rounded-full font-semibold shadow-md transition-all duration-300"
           >
             Connect
@@ -43,8 +58,15 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={28} className="text-black" /> : <Menu size={28} className="text-black" />}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 focus:outline-none"
+          >
+            {isOpen ? (
+              <X size={28} className="text-black" />
+            ) : (
+              <Menu size={28} className="text-black" />
+            )}
           </button>
         </div>
       </div>
@@ -56,7 +78,7 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-yellow-50 shadow-md overflow-hidden"
+            className="md:hidden bg-white/30 backdrop-blur-lg shadow-md overflow-hidden border-b border-white/30"
           >
             <ul className="flex flex-col gap-4 px-6 py-4">
               {navItems.map((item) => (
@@ -64,7 +86,7 @@ const Navbar: React.FC = () => {
                   <Link
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="block text-black hover:text-yellow-700 font-medium"
+                    className="block hover:text-yellow-700 font-medium"
                   >
                     {item.title}
                   </Link>
@@ -72,7 +94,7 @@ const Navbar: React.FC = () => {
               ))}
               <li>
                 <Link
-                  href="#contact"
+                  href="/contact"
                   onClick={() => setIsOpen(false)}
                   className="block bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-6 rounded-full font-semibold shadow-md text-center"
                 >

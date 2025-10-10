@@ -5,7 +5,7 @@
 :root {
   --background: #fff9ed; /* light background */
   --foreground: #000000; /* all text black */
-  --accent: #f6b93b; /* golden accent for icons only */
+  --accent: #F69F3BFF; /* golden accent for icons only */
   
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
@@ -63,15 +63,13 @@ button {
   font-family: var(--font-body);
   cursor: pointer;
   transition: all 0.3s ease;
-  background-color: #000; /* black button */
+   /* black button */
   color: #fff; /* white text */
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 12px;
 }
-button:hover {
-  background-color: #222; /* slightly darker on hover */
-}
+
 
 /* ---- Inputs & Textareas ---- */
 input, textarea {

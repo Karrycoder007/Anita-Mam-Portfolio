@@ -1,35 +1,48 @@
 'use client';
 
 import Image from 'next/image';
-import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { FaCertificate, FaAward, FaUsers } from 'react-icons/fa'; // icons added
+import { FaCertificate, FaAward, FaUsers } from 'react-icons/fa';
 
-const Counter = ({ from, to }: { from: number; to: number }) => {
-  const count = useMotionValue(from);
-  const rounded = useTransform(count, (latest) => Math.floor(latest));
-  const ref = useRef<HTMLSpanElement>(null);
+// Easing function for smooth slow-down at end
+const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+
+const SmoothCounter = ({ to, duration = 2.5 }: { to: number; duration?: number }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true });
 
   useEffect(() => {
-    if (inView) {
-      const controls = animate(count, to, { duration: 2.5, ease: 'easeOut' });
-      return controls.stop;
-    }
-  }, [inView, count, to]);
+    if (!inView) return;
+
+    const startTime = performance.now();
+
+    const animate = (time: number) => {
+      const elapsed = (time - startTime) / 1000; // in seconds
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutCubic(progress);
+      setCount(Math.floor(easedProgress * to));
+
+      if (progress < 1) requestAnimationFrame(animate);
+      else setCount(to); // ensure exact target at end
+    };
+
+    requestAnimationFrame(animate);
+  }, [inView, to, duration]);
 
   return (
-    <motion.span ref={ref} className="inline-block">
-      {rounded}
-    </motion.span>
+    <div ref={ref} className="inline-block font-extrabold text-5xl text-yellow-600">
+      {count}+
+    </div>
   );
 };
 
 const images = [
-  'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fGh1bWFufGVufDB8fDB8fHww',
-  'https://images.unsplash.com/photo-1620122303020-87ec826cf70d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODZ8fGh1bWFufGVufDB8fDB8fHww',
-  'https://images.unsplash.com/photo-1714205901279-1b157398fad5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzV8fGh1bWFufGVufDB8fDB8fHww',
-  'https://images.unsplash.com/photo-1722615095956-c346e12ac0f7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODF8fGh1bWFufGVufDB8fDB8fHww',
+  '/anita2.jpeg',
+  '/anita3.jpeg',
+  'https://images.unsplash.com/photo-1714205901279-1b157398fad5?w=600&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1722615095956-c346e12ac0f7?w=600&auto=format&fit=crop&q=60',
 ];
 
 export default function About() {
@@ -63,7 +76,12 @@ export default function About() {
                 animate={{ opacity: current === index ? 1 : 0 }}
                 transition={{ duration: 1.5, ease: 'easeInOut' }}
               >
-                <Image src={src} alt={`About Image ${index + 1}`} fill className="object-cover object-center" />
+                <Image
+                  src={src}
+                  alt={`About Image ${index + 1}`}
+                  fill
+                  className="object-cover object-center"
+                />
               </motion.div>
             ))}
           </div>
@@ -81,36 +99,29 @@ export default function About() {
             About Anita Raicar
           </h2>
           <p className="text-gray-700 mb-5 leading-relaxed text-lg">
-            Anita Raicar is a passionate <strong>Art of Living teacher</strong> and
-            <strong> Computer Science educator</strong> devoted to uplifting lives
-            through mindfulness, service, and learning.
+            Anita Raicar is a passionate <strong>Art of Living teacher</strong> and{' '}
+            <strong>Computer Science educator</strong> devoted to uplifting lives through
+            mindfulness, service, and learning.
           </p>
           <p className="text-gray-700 leading-relaxed text-lg mb-10">
-            Over the past decade, she has conducted multiple workshops,
-            empowered students, and supported community initiatives aimed at
-            social and spiritual growth.
+            Over the past decade, she has conducted multiple workshops, empowered students,
+            and supported community initiatives aimed at social and spiritual growth.
           </p>
 
           {/* Animated Stats */}
           <div className="flex justify-center md:justify-start gap-10 md:gap-16 mb-10">
             <div className="text-center">
-              <h3 className="text-5xl font-extrabold text-yellow-600">
-                <Counter from={0} to={10} />+
-              </h3>
+              <SmoothCounter to={10} />
               <p className="text-gray-700 text-sm mt-2">Years Experience</p>
             </div>
 
             <div className="text-center">
-              <h3 className="text-5xl font-extrabold text-yellow-600">
-                <Counter from={0} to={1000} />+
-              </h3>
+              <SmoothCounter to={400} />
               <p className="text-gray-700 text-sm mt-2">Lives Touched</p>
             </div>
 
             <div className="text-center">
-              <h3 className="text-5xl font-extrabold text-yellow-600">
-                <Counter from={0} to={50} />+
-              </h3>
+              <SmoothCounter to={50} />
               <p className="text-gray-700 text-sm mt-2">Workshops</p>
             </div>
           </div>

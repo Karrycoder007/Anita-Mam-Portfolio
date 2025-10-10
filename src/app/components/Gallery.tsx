@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const galleryImages = [
-  'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://images.unsplash.com/photo-1601412436009-d964bd02edbc?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  '/gallery4.jpg',
-  '/gallery5.jpg',
+  '/cyber1.jpeg',
+  '/cyber2.jpeg',
+  '/ratan1.jpeg',
+  '/tech4.jpeg',
+  '/panch3.jpeg',
   '/gallery6.jpg',
   '/gallery7.jpg',
   '/gallery8.jpg',

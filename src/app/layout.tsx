@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display, Dancing_Script } from "next/font/google";
 import "./globals.css";
 
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 // Import fonts with CSS variables
 const inter = Inter({
   variable: "--font-body",
@@ -22,7 +25,8 @@ const dancingScript = Dancing_Script({
 
 export const metadata: Metadata = {
   title: "Anita Raicar",
-  description: "Spiritual guidance, mindfulness sessions, and workshops by Anita Raicar",
+  description:
+    "Spiritual guidance, mindfulness sessions, and workshops by Anita Raicar",
 };
 
 export default function RootLayout({
@@ -33,9 +37,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${playfair.variable} ${dancingScript.variable} antialiased`}
+        className={`${inter.variable} ${playfair.variable} ${dancingScript.variable} antialiased bg-[#fff9ed] text-black`}
       >
-        {children}
+        {/* Fixed Navbar */}
+        <Navbar />
+
+        {/* Main Page Content */}
+        <main className="pt-20 min-h-screen">{children}</main>
+
+        {/* Footer */}
+        <Footer />
       </body>
     </html>
   );
