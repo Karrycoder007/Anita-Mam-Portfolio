@@ -34,7 +34,7 @@ const Workshops: React.FC = () => {
     <section id="workshops" className="w-full py-20 bg-white">
       <div className="container mx-auto px-6 md:px-12 text-center">
         <motion.h2
-          className="text-4xl font-bold text-yellow-800 mb-4"
+          className="text-6xl font-bold text-yellow-800 mb-4 accent"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -53,15 +53,15 @@ const Workshops: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {workshops.map((workshop, index) => (
-            <motion.div
+            <motion.div 
               key={index}
-              className="p-8 bg-yellow-50 rounded-3xl shadow-md hover:shadow-xl transition-shadow border border-yellow-100"
+              className="p-8 bg-yellow-50 rounded-3xl shadow-md hover:shadow-2xl transition-shadow border border-yellow-100"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
               <div className="flex justify-center mb-4">{workshop.icon}</div>
-              <h3 className="text-xl font-semibold text-yellow-800 mb-3">
+              <h3 className="text-2xl font-bold text-yellow-800 mb-3 accent">
                 {workshop.title}
               </h3>
               <p className="text-gray-600">{workshop.description}</p>

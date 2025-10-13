@@ -4,128 +4,117 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const images = [
+const galleries = [
   {
-    id: 1,
-    src: 'https://images.unsplash.com/photo-1580136609853-1b54b96409a7?w=800&q=80',
-    title: 'Art of Living Session',
-    category: 'events',
+    title: 'Social Events',
+    images: [
+      'https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?w=800&q=80',
+      'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=800&q=80',
+      'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
+      'https://images.unsplash.com/photo-1564865881470-96a8f1d6a0b7?w=800&q=80',
+      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80',
+      'https://images.unsplash.com/photo-1523958203904-cdcb402031fd?w=800&q=80',
+      
+    ],
   },
   {
-    id: 2,
-    src: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
-    title: 'Meditation Workshop',
-    category: 'events',
+    title: 'Teaching',
+    images: [
+      'https://images.unsplash.com/photo-1581092580490-ec94e4e74f0b?w=800&q=80',
+      'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&q=80',
+      'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&q=80',
+      'https://images.unsplash.com/photo-1581092795365-1c4b91a8d982?w=800&q=80',
+      'https://images.unsplash.com/photo-1519455953755-af066f52f1d7?w=800&q=80',
+      'https://images.unsplash.com/photo-1531219432768-54e4e8e9a7a4?w=800&q=80',
+      
+    ],
   },
   {
-    id: 3,
-    src: 'https://images.unsplash.com/photo-1515169067865-5387ec356754?w=800&q=80',
-    title: 'Achievement Award',
-    category: 'achievements',
+    title: 'Travel',
+    images: [
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
+      'https://images.unsplash.com/photo-1493558103817-58b2924bce98?w=800&q=80',
+      'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=80',
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80',
+      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
+      
+    ],
   },
   {
-    id: 4,
-    src: 'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=800&q=80',
-    title: 'Community Gathering',
-    category: 'events',
-  },
-  {
-    id: 5,
-    src: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80',
-    title: 'Personal Milestone',
-    category: 'achievements',
-  },
-  {
-    id: 6,
-    src: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&q=80',
-    title: 'Yoga & Wellness Event',
-    category: 'events',
-  },
-  {
-    id: 7,
-    src: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=800&q=80',
-    title: 'Inspiring Talk',
-    category: 'events',
-  },
-  {
-    id: 8,
-    src: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80',
-    title: 'Honor Ceremony',
-    category: 'achievements',
+    title: 'Spiritual Events',
+    images: [
+      'https://images.unsplash.com/photo-1509400190065-8f97aa9b80c5?w=800&q=80',
+      'https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?w=800&q=80',
+      'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=800&q=80',
+      'https://images.unsplash.com/photo-1511974035430-5de47d3b95da?w=800&q=80',
+      'https://images.unsplash.com/photo-1532619187606-6b06aa6de744?w=800&q=80',
+      'https://images.unsplash.com/photo-1483030095059-1335d1b3df37?w=800&q=80',
+      
+    ],
   },
 ];
 
 export default function GalleryPage() {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeCategory, setActiveCategory] = useState('Social Events');
 
-  const filteredImages =
-    activeFilter === 'all'
-      ? images
-      : images.filter((img) => img.category === activeFilter);
+  const currentGallery = galleries.find((g) => g.title === activeCategory);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16">
-      {/* Heading */}
-      <motion.h1
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-4xl font-bold text-center text-black mb-10"
-      >
-        Gallery
-      </motion.h1>
+    <section className="w-full py-16 bg-yellow-50 min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <h1 className="text-6xl font-bold text-center text-gray-900 mb-12 accent pb-6">
+          Gallery
+        </h1>
 
-      {/* Filter Buttons */}
-      <div className="flex justify-center gap-4 mb-12">
-        {['all', 'events', 'achievements'].map((filter) => (
-          <motion.button
-            key={filter}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => setActiveFilter(filter)}
-            className={`px-5 py-2 rounded-full text-sm font-medium border transition-all duration-300 
-              ${
-                activeFilter === filter
-                  ? 'bg-blue-600 text-white border-blue-600 shadow-md'
-                  : 'bg-white text-black border-gray-300 hover:bg-blue-50'
-              }`}
-          >
-            {filter.charAt(0).toUpperCase() + filter.slice(1)}
-          </motion.button>
-        ))}
-      </div>
+        {/* Category Selector */}
+<div className="flex flex-wrap justify-center gap-4 mb-12">
+  {galleries.map((section) => (
+    <button
+      key={section.title}
+      onClick={() => setActiveCategory(section.title)}
+      className={`relative text-xl sm:text-2xl font-bold accent text-black shadow-md px-3 py-1 transition-all duration-300
+        after:content-[''] after:absolute after:left-0 after:bottom-0
+        after:h-[2px] after:bg-black after:transition-all after:duration-300
+        ${activeCategory === section.title
+          ? 'after:w-full'
+          : 'after:w-0 hover:after:w-full opacity-80 hover:opacity-100'}
+      `}
+    >
+      {section.title}
+    </button>
+  ))}
+</div>
 
-      {/* Image Grid */}
-      <motion.div
-        layout
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
-      >
-        <AnimatePresence>
-          {filteredImages.map((img) => (
+
+        {/* Gallery Grid */}
+        <AnimatePresence mode="wait">
+          {currentGallery && (
             <motion.div
-              key={img.id}
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden rounded-xl shadow-md bg-white hover:shadow-xl transition-all"
+              key={activeCategory}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.4 }}
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
             >
-              <Image
-                src={img.src}
-                alt={img.title}
-                width={400}
-                height={250}
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-4 text-center">
-                <p className="text-sm font-semibold text-gray-800">
-                  {img.title}
-                </p>
-              </div>
+              {currentGallery.images.map((src, index) => (
+                <div
+                  key={index}
+                  className="relative w-full aspect-square overflow-hidden rounded-xl shadow-md hover:shadow-xl transition"
+                >
+                  <Image
+                    src={src}
+                    alt={`${activeCategory} ${index + 1}`}
+                    fill
+                    className="object-cover object-center"
+                  />
+                </div>
+              ))}
             </motion.div>
-          ))}
+          )}
         </AnimatePresence>
-      </motion.div>
-    </div>
+      </div>
+    </section>
   );
 }

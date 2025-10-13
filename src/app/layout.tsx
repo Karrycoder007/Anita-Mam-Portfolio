@@ -1,11 +1,14 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, Dancing_Script } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import WhatsAppButton from "./components/Whatsapp";
+ // optional, can be inline too
 
-// Import fonts with CSS variables
+// Fonts
 const inter = Inter({
   variable: "--font-body",
   subsets: ["latin"],
@@ -23,30 +26,30 @@ const dancingScript = Dancing_Script({
   subsets: ["latin"],
 });
 
+// Metadata (keep outside use client)
 export const metadata: Metadata = {
   title: "Anita Raicar",
   description:
     "Spiritual guidance, mindfulness sessions, and workshops by Anita Raicar",
 };
 
+// Layout is a server component by default (no "use client")
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
         className={`${inter.variable} ${playfair.variable} ${dancingScript.variable} antialiased bg-[#fff9ed] text-black`}
       >
-        {/* Fixed Navbar */}
         <Navbar />
-
-        {/* Main Page Content */}
         <main className="pt-20 min-h-screen">{children}</main>
-
-        {/* Footer */}
         <Footer />
+
+        {/* WhatsApp button - this can stay as client interactive */}
+        <WhatsAppButton />
       </body>
     </html>
   );

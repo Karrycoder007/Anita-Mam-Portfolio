@@ -11,11 +11,10 @@ const galleryImages = [
   '/panch3.jpeg',
   '/panch4.jpeg',
   '/tech4.jpeg',
-  '/gallery8.jpg',
-  '/gallery9.jpeg',
-  '/gallery10.jpeg',
-  '/gallery11.jpeg',
-  '/gallery12.jpeg',
+  '/a.jpeg',
+  '/b.jpeg',
+  '/c.jpeg',
+  '/e.jpeg',
 ];
 
 const Gallery: React.FC = () => {
@@ -45,25 +44,22 @@ const Gallery: React.FC = () => {
       </div>
 
       {/* Scrollable Gallery */}
-      <div
-        className="relative w-full overflow-x-auto no-scrollbar"
-        ref={scrollRef}
-      >
-        <div className="relative">
+      <div className="relative w-full overflow-hidden" ref={scrollRef}>
+        <div className="relative flex w-max">
+          {/* Smooth, continuous scroll */}
           <motion.div
-            className="flex gap-4 w-max"
-            initial={{ x: 0 }}
+            className="flex gap-4"
             animate={{ x: ['0%', '-50%'] }}
             transition={{
               ease: 'linear',
-              duration: 80, // slower sliding
+              duration: 50, // adjust speed (lower = faster)
               repeat: Infinity,
             }}
           >
             {[...galleryImages, ...galleryImages].map((src, index) => (
               <div
                 key={index}
-                className="relative w-64 h-40 md:w-80 md:h-52 flex-shrink-0 rounded-2xl overflow-hidden border-1 border-gray-400 shadow-md"
+                className="relative w-64 h-40 md:w-80 md:h-52 flex-shrink-0 rounded-2xl overflow-hidden border border-gray-300 shadow-md"
               >
                 <Image
                   src={src}
@@ -74,11 +70,11 @@ const Gallery: React.FC = () => {
               </div>
             ))}
           </motion.div>
-
-          {/* Gradient overlays for fade edges on images only */}
-          <div className="absolute top-0 left-0 w-10 h-full bg-gradient-to-r from-gray-400 to-transparent pointer-events-none rounded-l-2xl" />
-          <div className="absolute top-0 right-0 w-10 h-full bg-gradient-to-l from-gray-400 to-transparent pointer-events-none rounded-r-2xl" />
         </div>
+
+        {/* Fading edges for soft visual finish */}
+        <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-gray-800 to-transparent pointer-events-none" />
+        <div className="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-gray-800 to-transparent pointer-events-none" />
       </div>
 
       <style jsx>{`
@@ -86,8 +82,8 @@ const Gallery: React.FC = () => {
           display: none;
         }
         .no-scrollbar {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
     </section>
