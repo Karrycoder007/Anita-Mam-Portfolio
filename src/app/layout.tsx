@@ -1,12 +1,11 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, Dancing_Script } from "next/font/google";
 import "./globals.css";
-
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/Whatsapp";
- // optional, can be inline too
+import CountdownOverlay from "./components/CountdownOverlay";
+ // 👈 new component
 
 // Fonts
 const inter = Inter({
@@ -26,14 +25,13 @@ const dancingScript = Dancing_Script({
   subsets: ["latin"],
 });
 
-// Metadata (keep outside use client)
+// Metadata
 export const metadata: Metadata = {
   title: "Anita Raicar",
   description:
     "Spiritual guidance, mindfulness sessions, and workshops by Anita Raicar",
 };
 
-// Layout is a server component by default (no "use client")
 export default function RootLayout({
   children,
 }: {
@@ -44,12 +42,13 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} ${dancingScript.variable} antialiased bg-[#fff9ed] text-black`}
       >
-        <Navbar />
-        <main className="pt-20 min-h-screen">{children}</main>
-        <Footer />
-
-        {/* WhatsApp button - this can stay as client interactive */}
-        <WhatsAppButton />
+        {/* 👇 Wrap everything in the countdown overlay */}
+        <CountdownOverlay>
+          <Navbar />
+          <main className="pt-20 min-h-screen">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+        </CountdownOverlay>
       </body>
     </html>
   );
