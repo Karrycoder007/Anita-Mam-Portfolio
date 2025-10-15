@@ -8,48 +8,44 @@ const galleries = [
   {
     title: 'Social Events',
     images: [
-      'https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?w=800&q=80',
-      'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=800&q=80',
-      'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
-      'https://images.unsplash.com/photo-1564865881470-96a8f1d6a0b7?w=800&q=80',
-      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80',
-      'https://images.unsplash.com/photo-1523958203904-cdcb402031fd?w=800&q=80',
+      '/m1.jpeg',
+      '/m2.jpeg',
+      '/m3.jpeg',
+      '/m4.jpeg',
+      '/m5.jpeg',
+      '/m6.jpeg',
+      '/r.jpeg',
       
     ],
   },
   {
     title: 'Teaching',
     images: [
-      'https://images.unsplash.com/photo-1581092580490-ec94e4e74f0b?w=800&q=80',
-      'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&q=80',
-      'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&q=80',
-      'https://images.unsplash.com/photo-1581092795365-1c4b91a8d982?w=800&q=80',
-      'https://images.unsplash.com/photo-1519455953755-af066f52f1d7?w=800&q=80',
-      'https://images.unsplash.com/photo-1531219432768-54e4e8e9a7a4?w=800&q=80',
+      '/1.jpeg',
+      '/c1.jpeg',
+      '/c2.jpeg',
+      '/c3.jpeg',
+      '/n.jpeg',
       
     ],
   },
   {
-    title: 'Travel',
+    title: 'Art of Living',
     images: [
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
-      'https://images.unsplash.com/photo-1493558103817-58b2924bce98?w=800&q=80',
-      'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=80',
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80',
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80',
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
-      
+      '/anita1.jpeg',
+      '/b.jpeg',
+      '/c.jpeg',
+      '/g.jpeg',
+      '/h.jpeg',      
     ],
   },
   {
     title: 'Spiritual Events',
     images: [
-      'https://images.unsplash.com/photo-1509400190065-8f97aa9b80c5?w=800&q=80',
-      'https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?w=800&q=80',
-      'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=800&q=80',
-      'https://images.unsplash.com/photo-1511974035430-5de47d3b95da?w=800&q=80',
-      'https://images.unsplash.com/photo-1532619187606-6b06aa6de744?w=800&q=80',
-      'https://images.unsplash.com/photo-1483030095059-1335d1b3df37?w=800&q=80',
+      '/k.jpeg',
+      '/h.jpeg',
+      '/f.jpeg',
+      '/e.jpeg',
       
     ],
   },
@@ -89,31 +85,43 @@ export default function GalleryPage() {
 
         {/* Gallery Grid */}
         <AnimatePresence mode="wait">
-          {currentGallery && (
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.4 }}
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-            >
-              {currentGallery.images.map((src, index) => (
-                <div
-                  key={index}
-                  className="relative w-full aspect-square overflow-hidden rounded-xl shadow-md hover:shadow-xl transition"
-                >
-                  <Image
-                    src={src}
-                    alt={`${activeCategory} ${index + 1}`}
-                    fill
-                    className="object-cover object-center"
-                  />
-                </div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+  {currentGallery && (
+    <motion.div
+      key={activeCategory}
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -40 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"
+    >
+      {currentGallery.images.map((src, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="relative w-full aspect-[4/3] overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300"
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }} // image zooms smoothly
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="w-full h-full"
+          >
+            <Image
+              src={src}
+              alt={`${activeCategory} ${index + 1}`}
+              fill
+              className="object-cover object-center"
+            />
+          </motion.div>
+        </motion.div>
+      ))}
+    </motion.div>
+  )}
+</AnimatePresence>
+
+
       </div>
     </section>
   );

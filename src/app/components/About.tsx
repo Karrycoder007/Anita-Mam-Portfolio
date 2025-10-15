@@ -44,6 +44,7 @@ const SmoothCounter = ({ to, duration = 2.5 }: { to: number; duration?: number }
 
 const images = [
   '/anita2.jpeg',
+  '/t.jpeg',
   '/anita7.jpeg',
   '/anita6.jpeg',
   '/anita8.jpeg',

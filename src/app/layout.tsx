@@ -43,12 +43,12 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} ${dancingScript.variable} antialiased bg-[#fff9ed] text-black`}
       >
         {/* 👇 Wrap everything in the countdown overlay */}
-        <CountdownOverlay>
+        {/* <CountdownOverlay> */}
           <Navbar />
           <main className="pt-20 min-h-screen">{children}</main>
           <Footer />
           <WhatsAppButton />
-        </CountdownOverlay>
+        {/* </CountdownOverlay> */}
       </body>
     </html>
   );

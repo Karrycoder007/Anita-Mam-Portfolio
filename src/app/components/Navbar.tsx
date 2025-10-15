@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto flex justify-between items-center px-6 md:px-12 h-20">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-black">
+        <Link href="/" className="text-3xl font-bold text-black accent">
           Anita Raicar
         </Link>
 
@@ -43,14 +43,14 @@ const Navbar: React.FC = () => {
             <Link
               key={item.title}
               href={item.href}
-              className="text-black hover:text-yellow-700 transition-colors duration-300 font-medium"
+              className="text-black hover:text-yellow-700 transition-colors duration-300 text-2l font-bold accent"
             >
               {item.title}
             </Link>
           ))}
           <Link
             href="/contact"
-            className="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-6 rounded-full font-semibold shadow-md transition-all duration-300"
+            className="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-6 rounded-full font-semibold shadow-md transition-all duration-300 text-xl accent"
           >
             Connect
           </Link>
@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
                   <Link
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="block hover:text-yellow-700 font-medium"
+                    className="block hover:text-yellow-700 font-medium accent"
                   >
                     {item.title}
                   </Link>
@@ -96,7 +96,7 @@ const Navbar: React.FC = () => {
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="block bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-6 rounded-full font-semibold shadow-md text-center"
+                  className="block bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-6 rounded-full font-semibold shadow-md text-center text-xl accent"
                 >
                   Connect
                 </Link>

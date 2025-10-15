@@ -8,33 +8,33 @@ const highlights = [
     title: 'Supporting Local Businesses',
     description:
       'Encouraging people to buy from local producers and promoting small-scale entrepreneurship.',
-    img: '/c.jpeg',
+    img: '/local1.jpeg',
   },
   {
     title: 'Motivating the Youth',
     description:
       'Conducting workshops and talks to inspire young minds towards leadership and positive action.',
-    img: '/b.jpeg',
+    img: '/s.jpeg',
   },
   {
     title: 'Community Development',
     description:
       'Engaging in social initiatives to improve education, health, and infrastructure in local communities.',
-    img: '/c.jpeg',
+    img: '/m2.jpeg',
   },
   {
-    title: 'Global & Tech Awareness',
+    title: 'Global & Local Awareness',
     description:
       'Sharing insights on global trends, technology, and sustainability to empower informed decisions.',
-    img: '/tech4.jpeg',
+    img: '/p.jpeg',
   },
 ];
 
 const galleryImages = [
-  '/a.jpeg',
-  '/h.jpeg',
-  '/g.jpeg',
-  '/e.jpeg',
+  '/o.jpeg',
+  '/n.jpeg',
+  '/r.jpeg',
+  '/t.jpeg',
   
 ];
 
@@ -105,7 +105,7 @@ export default function SocialWorkPage() {
         </motion.div>
            {/* Info / Impact Cards */}
            <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-12 pt-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}

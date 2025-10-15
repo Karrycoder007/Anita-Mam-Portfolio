@@ -23,14 +23,14 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const res = await fetch('https://formspree.io/f/mzzjknpr', { // Replace with your Formspree ID
+    const res = await fetch('https://formspree.io/f/mzzjknpr', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
     });
 
     if (res.ok) {
-      router.push('/thank-you'); // Redirect to Thank You page
+      router.push('/thank-you');
     } else {
       alert('Something went wrong. Please try again.');
     }
@@ -38,7 +38,7 @@ export default function Contact() {
 
   return (
     <section className="w-full py-24 relative overflow-hidden bg-gradient-to-b from-yellow-50 to-white">
-      {/* Floating spiritual waves */}
+      {/* Floating Waves */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {[...Array(6)].map((_, i) => (
           <motion.div
@@ -58,7 +58,7 @@ export default function Contact() {
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-yellow-800 text-center mb-12"
+          className="text-4xl md:text-5xl font-bold text-yellow-800 text-center mb-12 accent"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -66,37 +66,38 @@ export default function Contact() {
           Book a Session / Contact Anita
         </motion.h2>
 
-        <div className="flex flex-col md:flex-row gap-12 md:gap-24">
+        <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-stretch">
           {/* Left Side: Image + Text */}
           <motion.div
-            className="md:w-1/2 flex flex-col items-start justify-center gap-8"
+            className="md:w-1/2 flex flex-col justify-between bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
           >
-            <div className="relative w-full h-[500px] rounded-3xl overflow-hidden shadow-lg">
+            <div className="relative w-full h-[400px] rounded-3xl overflow-hidden shadow-lg ">
               <Image
-                src="/images/anita-contact.jpg" // Put your image in /public/images/
+                src="/t.jpeg"
                 alt="Anita Raicar"
                 fill
-                style={{ objectFit: 'cover' }}
+                className="object-contain scale-105 transition-transform duration-700 ease-out hover:scale-110 "
                 priority
               />
             </div>
 
-            <p className="text-gray-700 text-lg">
+            <p className="text-gray-700 text-lg mt-6">
               Connect with Anita for spiritual guidance, mindfulness sessions, workshops, and personal growth.
             </p>
 
-            <div className="flex items-center gap-3 text-yellow-700 text-lg font-semibold">
-              <FaEnvelope /> <span>anita@example.com</span>
-            </div>
-            <div className="flex items-center gap-3 text-yellow-700 text-lg font-semibold">
-              <FaPhone /> <span>+91 98765 43210</span>
+            <div className="flex flex-col gap-2 mt-4">
+              <div className="flex items-center gap-3 text-yellow-700 text-lg font-semibold">
+                <FaEnvelope /> <span>anitaraicarwebsite@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-3 text-yellow-700 text-lg font-semibold">
+                <FaPhone /> <span>+91 9011370514</span>
+              </div>
             </div>
 
-            {/* Spiritual Icons */}
-            <div className="flex gap-6 mt-4">
+            <div className="flex gap-6 mt-6">
               <motion.div whileHover={{ scale: 1.2 }} className="p-4 rounded-full bg-yellow-100 text-yellow-600 shadow-md">
                 <GiMeditation className="text-3xl" />
               </motion.div>
@@ -108,7 +109,7 @@ export default function Contact() {
 
           {/* Right Side: Form */}
           <motion.div
-            className="md:w-1/2 flex flex-col gap-4 bg-white p-8 rounded-2xl shadow-lg border border-yellow-100 relative z-10"
+            className="md:w-1/2 flex flex-col justify-center bg-white p-8 rounded-2xl shadow-lg border border-yellow-100"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
