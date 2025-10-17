@@ -33,7 +33,7 @@ export default function Hero() {
               href="/contact"
               className="px-6 py-3 bg-orange-400 text-white font-semibold rounded-lg shadow-md hover:bg-orange-500 transition transform duration-200"
             >
-              Book a Session
+              Book a Session 
             </Link>
             <Link
               href="/events"

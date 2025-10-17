@@ -49,16 +49,14 @@ export default function Footer() {
         <div>
           <h3 className="text-3xl accent font-bold text-yellow-800 mb-4">Connect</h3>
           <div className="flex items-center space-x-4">
-            <Link href="https://facebook.com" target="_blank" className="text-gray-700 hover:text-yellow-700">
+            <Link href="https://www.facebook.com/anita.raicar" target="_blank" className="text-gray-700 hover:text-yellow-700">
               <Facebook size={24} />
             </Link>
-            <Link href="https://instagram.com" target="_blank" className="text-gray-700 hover:text-yellow-700">
+            <Link href="https://www.instagram.com/anitaraicar?igsh=MWZnZ2R1ZnVmMWw5eg==" target="_blank" className="text-gray-700 hover:text-yellow-700">
               <Instagram size={24} />
             </Link>
-            <Link href="https://linkedin.com" target="_blank" className="text-gray-700 hover:text-yellow-700">
-              <Linkedin size={24} />
-            </Link>
-            <Link href="mailto:anita@example.com" className="text-gray-700 hover:text-yellow-700">
+            
+            <Link href="mailto:anitaraicarwebsite@gmail.com" className="text-gray-700 hover:text-yellow-700">
               <Mail size={24} />
             </Link>
           </div>
