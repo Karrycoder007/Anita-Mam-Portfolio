@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/Whatsapp";
 import CountdownOverlay from "./components/CountdownOverlay";
+import { Analytics } from "@vercel/analytics/next"
  // 👈 new component
 
 // Fonts
@@ -49,6 +50,7 @@ export default function RootLayout({
           <Footer />
           <WhatsAppButton />
         </CountdownOverlay>
+        <Analytics/>
       </body>
     </html>
   );
