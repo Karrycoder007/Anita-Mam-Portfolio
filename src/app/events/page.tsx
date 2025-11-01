@@ -5,33 +5,13 @@ import { motion } from 'framer-motion';
 
 const events = [
   {
-    title: "Art of Living Workshop",
-    date: "15th November 2025",
-    location: "Ponda, Goa",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&auto=format&fit=crop&q=60",
-    link: "#",
+    title: "Happines Course",
+    date: "4th to 7th November",
+    location: "Porvorim, Goa",
+    image: "/happiness.png",
+    link: "https://www.artofliving.online/registration.php?event_id=923764&prefill=co1Lja_Ro7huh7--jSvu4A.L_KPIiWvr6dBmygSsP0S6JDBgYtsKMx1YPpX1xH5-w4&",
   },
-  {
-    title: "Mindfulness Meditation Retreat",
-    date: "25th November 2025",
-    location: "Goa Ashram",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=60",
-    link: "#",
-  },
-  {
-    title: "Youth Leadership Seminar",
-    date: "5th December 2025",
-    location: "Panaji, Goa",
-    image: "https://images.unsplash.com/photo-1522199710521-72d69614c702?w=600&auto=format&fit=crop&q=60",
-    link: "#",
-  },
-  {
-    title: "Stress Relief Workshop",
-    date: "15th December 2025",
-    location: "Margao, Goa",
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&auto=format&fit=crop&q=60",
-    link: "#",
-  },
+  
 ];
 
 export default function EventPage() {
@@ -65,7 +45,7 @@ export default function EventPage() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="relative w-full h-56">
+              <div className="relative w-full h-76">
                 <Image
                   src={event.image}
                   alt={event.title}
@@ -79,7 +59,8 @@ export default function EventPage() {
                 <p className="text-gray-700 mb-4"><strong>Location:</strong> {event.location}</p>
                 <a
                   href={event.link}
-                  className="inline-block px-6 py-2 bg-yellow-600 text-white font-semibold rounded-full hover:bg-yellow-700 transition"
+                  target="_blank"
+                  className="inline-block blank px-6 py-2 bg-yellow-600 text-white font-semibold rounded-full hover:bg-yellow-700 transition"
                 >
                   Register
                 </a>

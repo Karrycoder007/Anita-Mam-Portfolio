@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/Whatsapp";
-import CountdownOverlay from "./components/CountdownOverlay";
+
 import { Analytics } from "@vercel/analytics/next"
  // 👈 new component
 
@@ -44,12 +44,12 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} ${dancingScript.variable} antialiased bg-[#fff9ed] text-black`}
       >
         {/* 👇 Wrap everything in the countdown overlay */}
-        <CountdownOverlay>
+       
           <Navbar />
           <main className="pt-20 min-h-screen">{children}</main>
           <Footer />
           <WhatsAppButton />
-        </CountdownOverlay>
+        
         <Analytics/>
       </body>
     </html>
