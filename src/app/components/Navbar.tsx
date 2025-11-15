@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
           ))}
           <Link
             href="/contact"
-            className="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-6 rounded-full font-semibold shadow-md transition-all duration-300 text-xl accent"
+            className="bg-orange-400 hover:bg-yellow-500 text-white py-2 px-6 rounded-full font-semibold shadow-md transition-all duration-300 text-xl accent"
           >
             Connect
           </Link>

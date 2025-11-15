@@ -31,7 +31,7 @@ export default function Hero() {
           <div className="flex justify-center lg:justify-start gap-4">
             <Link
               href="/contact"
-              className="px-6 py-3 bg-orange-400 text-white font-semibold rounded-lg shadow-md hover:bg-orange-500 transition transform duration-200"
+              className="px-6 py-3 bg-orange-400 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-500 transition transform duration-200"
             >
               Book a Session 
             </Link>

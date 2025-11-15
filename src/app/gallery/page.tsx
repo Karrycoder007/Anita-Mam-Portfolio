@@ -36,7 +36,11 @@ const galleries = [
       '/b.jpeg',
       '/c.jpeg',
       '/g.jpeg',
-      '/h.jpeg',      
+      '/h.jpeg', 
+      '/zz.jpeg',
+      '/zzz.jpeg',  
+      '/u.jpeg',
+      '/v.jpeg',   
     ],
   },
   {
@@ -46,6 +50,10 @@ const galleries = [
       '/h.jpeg',
       '/f.jpeg',
       '/e.jpeg',
+      '/u.jpeg',
+      '/v.jpeg',
+      '/w.jpeg',
+      '/x.jpeg',
       
     ],
   },

@@ -9,6 +9,20 @@ const events = [
     date: "4th to 7th November",
     location: "Porvorim, Goa",
     image: "/happiness.png",
+    link: "",
+  },
+  {
+    title: "Guru pooja and Satsang",
+    date: "",
+    location: "Porvorim, Goa",
+    image: "/post4.jpeg",
+    link: "",
+  },
+  {
+    title: "Happines Course",
+    date: "27th to 30th November",
+    location: "Porvorim, Goa",
+    image: "/post3.jpeg",
     link: "https://www.artofliving.online/registration.php?event_id=923764&prefill=co1Lja_Ro7huh7--jSvu4A.L_KPIiWvr6dBmygSsP0S6JDBgYtsKMx1YPpX1xH5-w4&",
   },
   
@@ -60,7 +74,7 @@ export default function EventPage() {
                 <a
                   href={event.link}
                   target="_blank"
-                  className="inline-block blank px-6 py-2 bg-yellow-600 text-white font-semibold rounded-full hover:bg-yellow-700 transition"
+                  className="inline-block blank px-6 py-2 bg-orange-400 text-white font-semibold rounded-full hover:bg-yellow-500 transition"
                 >
                   Register
                 </a>

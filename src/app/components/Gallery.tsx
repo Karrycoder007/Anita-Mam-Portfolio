@@ -7,6 +7,7 @@ const galleryImages = [
   '/cyber1.jpeg',
   '/cyber2.jpeg',
   '/ratan1.jpeg',
+  '/pramod.jpeg',
   '/tech4.jpeg',
   '/tech3.jpeg',
   '/panch4.jpeg',
@@ -16,6 +17,8 @@ const galleryImages = [
   '/c.jpeg',
   '/e.jpeg',
   '/l.jpeg',
+  '/u.jpeg',
+  '/v.jpeg',
 ];
 
 const Gallery: React.FC = () => {
