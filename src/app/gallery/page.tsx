@@ -40,7 +40,9 @@ const galleries = [
       '/zz.jpeg',
       '/zzz.jpeg',  
       '/u.jpeg',
-      '/v.jpeg',   
+      '/v.jpeg',0
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                              
     ],
   },
   {
@@ -128,6 +130,7 @@ export default function GalleryPage() {
     </motion.div>
   )}
 </AnimatePresence>
+
 
 
       </div>
