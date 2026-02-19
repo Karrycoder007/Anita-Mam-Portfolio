@@ -22,7 +22,7 @@ const galleries = [
     title: 'Teaching',
     images: [
       '/1.jpeg',
-      '/c1.jpeg',
+      '/c1.jpeg',                                                
       '/c2.jpeg',
       '/c3.jpeg',
       '/n.jpeg',
