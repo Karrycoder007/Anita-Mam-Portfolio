@@ -40,7 +40,7 @@ const galleries = [
       '/zz.jpeg',
       '/zzz.jpeg',  
       '/u.jpeg',
-      '/v.jpeg',0
+      '/v.jpeg',
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
                                                                                                                                                                                                               
     ],
