@@ -33,27 +33,32 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto flex justify-between items-center px-6 md:px-12 h-20">
         {/* Logo */}
-        <Link href="/" className="text-3xl font-bold text-black accent">
-          Anita Raicar
-        </Link>
+        <Link href="/" className="text-3xl font-bold text-black accent" aria-label="Go to Home page">
+  Anita Raicar
+</Link>
+
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.title}
-              href={item.href}
-              className="text-black hover:text-yellow-700 transition-colors duration-300 text-2l font-bold accent"
-            >
-              {item.title}
-            </Link>
-          ))}
-          <Link
-            href="/contact"
-            className="bg-orange-400 hover:bg-yellow-500 text-white py-2 px-6 rounded-full font-semibold shadow-md transition-all duration-300 text-xl accent"
-          >
-            Connect
-          </Link>
+        {navItems.map((item) => (
+  <Link
+    key={item.title}
+    href={item.href}
+    className="text-black hover:text-yellow-700 transition-colors duration-300 text-2l font-bold accent"
+    aria-label={`Go to ${item.title} page`}
+  >
+    {item.title}
+  </Link>
+))}
+
+<Link
+  href="/contact"
+  className="bg-orange-400 hover:bg-yellow-500 text-white py-2 px-6 rounded-full font-semibold shadow-md transition-all duration-300 text-xl accent"
+  aria-label="Go to Contact page"
+>
+  Connect
+</Link>
+
         </div>
 
         {/* Mobile Menu Button */}
@@ -81,26 +86,30 @@ const Navbar: React.FC = () => {
             className="md:hidden bg-white/30 backdrop-blur-lg shadow-md overflow-hidden border-b border-white/30"
           >
             <ul className="flex flex-col gap-4 px-6 py-4">
-              {navItems.map((item) => (
-                <li key={item.title}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block hover:text-yellow-700 font-medium accent"
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link
-                  href="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className="block bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-6 rounded-full font-semibold shadow-md text-center text-xl accent"
-                >
-                  Connect
-                </Link>
-              </li>
+            {navItems.map((item) => (
+  <li key={item.title}>
+    <Link
+      href={item.href}
+      onClick={() => setIsOpen(false)}
+      className="block hover:text-yellow-700 font-medium accent"
+      aria-label={`Go to ${item.title} page`}
+    >
+      {item.title}
+    </Link>
+  </li>
+))}
+
+<li>
+  <Link
+    href="/contact"
+    onClick={() => setIsOpen(false)}
+    className="block bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-6 rounded-full font-semibold shadow-md text-center text-xl accent"
+    aria-label="Go to Contact page"
+  >
+    Connect
+  </Link>
+</li>
+
             </ul>
           </motion.div>
         )}
