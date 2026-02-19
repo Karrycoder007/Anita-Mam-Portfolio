@@ -7,7 +7,7 @@ import Link from 'next/link';
 const navItems = [
   { title: 'Home', href: '/' },
   { title: 'Social Work', href: '/socialwork' },
-  { title: 'Events', href: '/events' },
+  { title: 'See Events', href: '/events' },
   { title: 'Gallery', href: '/gallery' },
 ];
 
@@ -63,16 +63,14 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="p-2 focus:outline-none"
-          >
-            {isOpen ? (
-              <X size={28} className="text-black" />
-            ) : (
-              <Menu size={28} className="text-black" />
-            )}
-          </button>
+        <button
+  onClick={() => setIsOpen(!isOpen)}
+  className="p-2 focus:outline-none"
+  aria-label={isOpen ? 'Close menu' : 'Open menu'}
+>
+  {isOpen ? <X size={28} className="text-black" /> : <Menu size={28} className="text-black" />}
+</button>
+
         </div>
       </div>
 
