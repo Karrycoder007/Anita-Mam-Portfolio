@@ -25,6 +25,13 @@ const events = [
     image: "/post3.jpeg",
     link: "https://www.artofliving.online/registration.php?event_id=923764&prefill=co1Lja_Ro7huh7--jSvu4A.L_KPIiWvr6dBmygSsP0S6JDBgYtsKMx1YPpX1xH5-w4&",
   },
+   {
+    title: "Womens Day",
+    date: "11 March 2026",
+    location: "Swmai Vivekananda Hall, Goa",
+    image: "/posterrr.jpeg",
+    link: "",
+  },
   
 ];
 
